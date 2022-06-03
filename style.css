@@ -1,0 +1,101 @@
+@import url("fonts/webfont/mr\ eaves/stylesheet.css");
+@import url("fonts/webfont/scaly\ sans/stylesheet.css");
+
+:root {
+    --border-color: #3e2203;
+}
+
+body {
+    background-image: url("images/PHB-background.png");
+}
+
+* {
+    text-rendering: geometricPrecision;
+    overflow-wrap:break-word;
+}
+
+div.item {
+    background-color: #faf7ea;
+    display: flex;
+    flex-direction: column;
+    min-height: 100px;
+    width: 300px;
+    padding: 8px;
+
+    border-left-style: solid;
+    border-right-style: solid;
+    border-width: 2px;
+    border-color: var(--border-color);
+}
+
+.configRow {
+    padding:10px;
+}
+
+.vertical-center {
+    min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+    min-height: 100vh; /* These two lines are counted as one :-)       */
+  
+    display: flex;
+    align-items: center;
+  }
+
+label {
+    font-family: "mr_eaves";
+    font-size:large;
+}
+
+
+p.title {
+    font-family: 'mr_eaves';
+    font-size: 15pt;
+    color: #58170D;
+    margin-top:0px;
+    margin-bottom:4px;
+}
+
+p.subtitle {
+    font-family: 'scaly_sansitalic';
+    font-size: 8pt;
+    margin-top:0px;
+    margin-bottom:0px;
+}
+
+p.description {
+    font-family: 'scaly_sansregular';
+    font-size: 8.5pt;
+    line-height: 1.5em;
+}
+
+.dot {
+   height: 6px;
+   width: 6px;
+   border-radius: 100%;
+   background: var(--border-color);
+   position: absolute;
+}
+
+.lefttop {
+   top: 0;
+   left: 0;
+   transform: translate(-60%, -60%);
+   
+}
+
+.leftbottom {
+   bottom: 0;
+   left: 0;
+   transform: translate(-60%, 60%);
+}
+
+.righttop {
+   right: 0;
+   top: 0;
+   transform: translate(60%, -60%);
+}
+
+.rightbottom {
+   right: 0;
+   bottom: 0;
+   transform: translate(60%, 60%);
+}

@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    
+    <title>Item Block Generator</title>
+    <link rel="stylesheet" href="style.css" type="text/css" charset="utf-8" />     
+    <base href="./">
+    <script type="module" src="client.js"></script>   
+</head>
+
+<body>
+    <div class="modal fade" id="outputModal" tabindex="-1" aria-labelledby="outputModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="outputModalLabel">Output</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <img id="imageOutput" style="max-width:100%; max-height:100%;">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="saveImageOutputButton">Save Image</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-sm">
+        <div class="row align-items-center justify-content-center vertical-center">
+            <div class="col d-flex justify-content-center">
+                <div class="container">
+                    <div class="row align-items-center configRow">
+                        <div class="col-3">
+                            <label for="titleInput">Name:</label>
+                        </div>
+                        <div class="col">
+                            <input class="form-control" type="text" id="titleInput">
+                        </div>
+                    </div>
+
+                    <div class="row configRow">
+                        <div class="col">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="overrideSubtitleCheck">
+                                <label class="form-check-label" for="overrideSubtitleCheck">
+                                    Override Subtitle?
+                                </label>                            
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row align-items-center configRow" id="subtitleInputRow" hidden="true">
+                        <div class="col-3">
+                            <label for="subtitleInput">Subtitle:</label>
+                        </div>
+                        <div class="col">
+                            <input class="form-control" type="text" id="subtitleInput">
+                        </div>
+                    </div>
+
+                    <div id="subtitleSettings">
+                        <div class="row align-items-center configRow">
+                            <div class="col-3">
+                                <label for="rarityDropdown">
+                                    Item Rarity:
+                                </label>
+                            </div>
+                            <div class="col-4">
+                                
+                                <select class="form-select" id="rarityDropdown">
+                                    <option selected>Common</option>
+                                    <option>Uncommon</option>
+                                    <option>Rare</option>
+                                    <option>Very Rare</option>
+                                    <option>Legendary</option>
+                                    <option>Artifact</option>
+                                    <option>Varies</option>
+                                    <option>Unknown Rarity</option>
+                                    <option>Custom</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="row align-items-center configRow" id="customRarityInputRow" hidden="true">
+                            <div class="col-6">
+                                <label for="customRarityInput">Custom Item Rarity:</label>
+                            </div>
+                            <div class="col">
+                                <input class="form-control" type="text" id="customRarityInput">
+                            </div>
+                        </div>
+
+                        <div class="row align-items-center configRow">
+                            <div class="col-3">
+                                <label for="baseItemTypeDropdown">
+                                    Item Type:
+                                </label>
+                            </div>
+                            <div class="col">
+                                <select class="form-select" id="baseItemTypeDropdown">                            
+                                    <option selected>Item</option>
+                                    <option>Weapon</option>
+                                    <option>Armor</option>
+                                    <option>Custom</option>
+                                </select>
+                            </div>             
+                            <div class="col-5">
+                                <select class="form-select" id="itemTypeDropdown">
+                                    <option selected>Wondrous Item</option>
+                                    <option>Rod</option>
+                                    <option>Scroll</option>
+                                    <option>Staff</option>
+                                    <option>Wand</option>
+                                    <option>Ring</option>
+                                    <option>Potion</option>
+                                </select>
+                                <select class="form-select" id="weaponTypeDropdown" hidden="true">
+                                    <option selected>Club</option>
+                                    <option>Dagger</option>
+                                    <option>Greatclub</option>
+                                    <option>Handaxe</option>
+                                    <option>Javelin</option>
+                                    <option>Light Hammer</option>
+                                    <option>Mace</option>
+                                    <option>Quarterstaff</option>
+                                    <option>Sickle</option>
+                                    <option>Spear</option>
+                                    <option>Battleaxe</option>
+                                    <option>Flail</option>
+                                    <option>Glaive</option>
+                                    <option>Greataxe</option>
+                                    <option>Greatsword</option>
+                                    <option>Halberd</option>
+                                    <option>Lance</option>
+                                    <option>Longsword</option>
+                                    <option>Maul</option>
+                                    <option>Morningstar</option>
+                                    <option>Pike</option>
+                                    <option>Rapier</option>
+                                    <option>Shortsword</option>
+                                    <option>Triden</option>
+                                    <option>War Pick</option>
+                                    <option>Warhammer</option>
+                                    <option>Whip</option>
+                                    <option>Dart</option>
+                                    <option>Shortbow</option>
+                                    <option>Sling</option>
+                                    <option>Blowgun</option>
+                                    <option>Crossbow, Light</option>
+                                    <option>Crossbow, Heavy</option>
+                                    <option>Crossbow, Hand</option>
+                                    <option>Longbow</option>
+                                    <option>Net</option>
+                                    <option>Custom</option>
+                                </select>
+                                <select class="form-select" id="armorTypeDropdown" hidden="true">
+                                    <option selected>Padded</option>
+                                    <option>Leather</option>
+                                    <option>Studded Leather</option>
+                                    <option>Hide</option>
+                                    <option>Chain Shirt</option>
+                                    <option>Scale Mail</option>
+                                    <option>Spiked</option>
+                                    <option>Breastplate</option>
+                                    <option>Half Plate</option>
+                                    <option>Ring Mail</option>
+                                    <option>Chain Mail</option>
+                                    <option>Splint</option>
+                                    <option>Plate</option>
+                                    <option>Shield</option>
+                                    <option>Custom</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="row align-items-center configRow" id="customItemTypeInputRow" hidden="true">
+                            <div class="col-6">
+                                <label for="customItemTypeInput" id="customItemTypeInputLabel">Custom Item Type:</label>
+                            </div>
+                            <div class="col">
+                                <input class="form-control" type="text" id="customItemTypeInput">
+                            </div>
+                        </div>
+
+                        <div class="row configRow">
+                            <div class="col">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="attunementCheck">
+                                    <label class="form-check-label" for="attunementCheck">
+                                        Requires Attunement?
+                                    </label>                            
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row align-items-center configRow" id="attunementDetailsInputRow" hidden="true">
+                            <div class="col-6">
+                                <label for="attunementDetailsInput">Attunement Details:</label>
+                            </div>
+                            <div class="col">
+                                <input class="form-control" type="text" id="attunementDetailsInput">
+                            </div>
+                        </div>
+                        
+                        <div class="row configRow">
+                            <div class="col d-flex justify-content-center">
+                                <label for="descriptionInput">Item Description:</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row configRow">
+                        <div class="col">
+                            <textarea class="form-control" id="descriptionInput" rows="5"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="row configRow">
+                        <div class="col-3">
+                            <label class="form-label" for="widthSlider">Image Width</label>        
+                        </div>
+                        <div class="col">                    
+                            <input class="form-range" type="range" id="widthSlider" value="300" min="300" max="600" step="1">                                                    
+                        </div>
+                    </div>
+
+                    <div class="row configRow">
+                        <div class="col">
+                            <button class="btn btn-primary" type="button" id="generateImageModalButton" data-bs-toggle="modal" data-bs-target="#outputModal">Generate Image</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col d-flex justify-content-center">
+                
+                <div class="item" id="item">
+                    <p class="title" id="title">Item Name</p>
+                    <p class="subtitle" id="subtitle">Item Subtitle</p>
+                    <p class="description" id="description">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    
+    
+
+</body>
+</html>
