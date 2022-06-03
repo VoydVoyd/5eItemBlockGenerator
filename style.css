@@ -7,6 +7,7 @@
 
 body {
     background-image: url("images/PHB-background.png");
+    background-size: cover;
 }
 
 * {
